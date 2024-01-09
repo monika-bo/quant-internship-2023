@@ -35,7 +35,7 @@ jobs:
           SLACK_TITLE: DSK TEST
           SLACK_USERNAME: KOLETO
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-  publishBenchRes:
+  runBenchRes:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -53,3 +53,6 @@ jobs:
           INPUT_PRUNE_COUNT: 0
           INPUT_PUBLISH: true
           INPUT_PUBLISH_BRANCH: gh-pages
+      - name: CryForHelp
+        run: gobenchdata web generate ./app
+
