@@ -53,6 +53,8 @@ jobs:
           INPUT_PRUNE_COUNT: 0
           INPUT_PUBLISH: true
           INPUT_PUBLISH_BRANCH: gh-pages
+      - name: prepareToCry
+        run: go install go.bobheadxi.dev/gobenchdata@latest
       - name: CryForHelp
         run: gobenchdata web generate ./app
 
