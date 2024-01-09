@@ -45,7 +45,7 @@ jobs:
       - name: gobenchdata publish
         run: go run go.bobheadxi.dev/gobenchdata@v1 action
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.NOT_GITHUB_PERSONAL_ACCESS_TOKEN }}
           INPUT_PRUNE_COUNT: 0
           INPUT_PUBLISH: true
           INPUT_PUBLISH_BRANCH: gh-pages
