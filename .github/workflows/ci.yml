@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.21.4
+
+      - name: Build and Test
+        run: go test -v ./...
+
+  slackNotification:
+    name: Slack Notification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: quantive-interns-2023
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+          SLACK_ICON: https://cdn-icons-png.flaticon.com/512/3468/3468447.png
+          SLACK_MESSAGE: ':rocket: KOLE POLUCHI LI'
+          SLACK_TITLE: DSK TEST
+          SLACK_USERNAME: KOLETO
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
